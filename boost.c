@@ -95,7 +95,7 @@ char __fastcall netcat_insert_dedupe_hooked(uint64_t catalog, uint64_t* key, uin
 void initialize()
 {
   // set up function hooks
-  // addresses hardcoded for Steam version 2205/1.53
+  // addresses hardcoded for Steam version 2215/1.53
   uint64_t base_addr = (uint64_t)GetModuleHandleA(NULL);
   netcat_insert_dedupe_addr = base_addr + 0x10AA918;
   strlen_addr = base_addr + 0x17C01A0;

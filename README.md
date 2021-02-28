@@ -1,6 +1,6 @@
 ## PoC that fixes two GTA Online bugs and drastically improves load times for CPU-bound systems
 
-All addresses hardcoded for Steam version 2205/1.53
+All addresses hardcoded for Steam version 2215/1.53
 
 This is a proof of concept, not meant for casual use
 
