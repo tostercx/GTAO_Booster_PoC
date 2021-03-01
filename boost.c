@@ -8,11 +8,11 @@ netcat_insert_direct_t netcat_insert_direct = NULL;
 typedef size_t (__cdecl* strlen_t)(const char *str);
 strlen_t builtin_strlen = NULL;
 
-HMODULE g_hmod;
-HANDLE g_uninject_thread;
+HMODULE g_hmod = NULL;
+HANDLE g_uninject_thread = NULL;
 
-uint64_t netcat_insert_dedupe_addr;
-uint64_t strlen_addr;
+uint64_t netcat_insert_dedupe_addr = 0;
+uint64_t strlen_addr = 0;
 
 
 // proper dll self unloading - not sure where I got this from
@@ -32,9 +32,9 @@ void unload()
 // comes with a built in "cache" for exactly one item
 size_t strlen_cacher(char* str)
 {
-  static char* start;
-  static char* end;
-  size_t len;
+  static char* start = NULL;
+  static char* end = NULL;
+  size_t len = 0;
   const size_t cap = 20000;
 
   // if we have a "cached" string and current pointer is within it
