@@ -43,7 +43,7 @@ size_t strlen_cacher(char* str)
     len = end - str;
 
     // if we're near the end, unload self
-    // we don't want to mess osmething else up
+    // we don't want to mess something else up
     if (len < cap / 2)
       MH_DisableHook((LPVOID)strlen_addr);
 
