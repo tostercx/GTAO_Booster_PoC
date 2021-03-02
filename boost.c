@@ -68,7 +68,7 @@ size_t strlen_cacher(char* str)
 }
 
 
-// noramlly this checks for duplicates before inserting
+// normally this checks for duplicates before inserting
 // but to speed things up we just skip that and insert directly
 char __fastcall netcat_insert_dedupe_hooked(uint64_t catalog, uint64_t* key, uint64_t* item)
 {
