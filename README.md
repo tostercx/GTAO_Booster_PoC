@@ -1,3 +1,9 @@
+## For people looking for binaries
+
+There's a better maintained fork with a release here: https://github.com/QuickNET-Tech/GTAO_Booster_PoC
+
+I will not be providing any builds here. This is a research project, the code is for demonstration purposes only.
+
 ## PoC that fixes two GTA Online bugs and drastically improves load times for CPU-bound systems
 
 All addresses hardcoded for Steam and RL versions 2215/1.53
