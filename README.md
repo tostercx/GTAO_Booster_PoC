@@ -1,6 +1,6 @@
 ## For people looking for binaries
 
-There's a better maintained fork with a release here: https://github.com/QuickNET-Tech/GTAO_Booster_PoC
+There's a better maintained fork with a release here: https://github.com/QuickNET-Tech/GTAO_Booster_PoC/releases
 
 I will not be providing any builds. This is a research project, the code is for demonstration purposes only.
 
