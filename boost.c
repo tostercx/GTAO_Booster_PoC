@@ -95,12 +95,21 @@ char __fastcall netcat_insert_dedupe_hooked(uint64_t catalog, uint64_t* key, uin
 void initialize()
 {
   // set up function hooks
-  // addresses hardcoded for Steam version 2215/1.53
   uint64_t base_addr = (uint64_t)GetModuleHandleA(NULL);
-  netcat_insert_dedupe_addr = base_addr + 0x10AA918;
-  strlen_addr = base_addr + 0x17C01A0;
+  
+  if (GetModuleHandleA("steam_api64.dll") == NULL) {
+    // addresses hardcoded for Social Club version 2215/1.53
+    netcat_insert_dedupe_addr = base_addr + 0x10A9664;
+    strlen_addr = base_addr + 0x17BD600;
 
-  netcat_insert_direct = (netcat_insert_direct_t)(base_addr + 0x5BB07C);
+    netcat_insert_direct = (netcat_insert_direct_t)(base_addr + 0x24EA8C);
+  } else {
+    // addresses hardcoded for Steam version 2215/1.53
+    netcat_insert_dedupe_addr = base_addr + 0x10AA918;
+    strlen_addr = base_addr + 0x17C01A0;
+
+    netcat_insert_direct = (netcat_insert_direct_t)(base_addr + 0x5BB07C);
+  }
   
   MH_Initialize();
 
