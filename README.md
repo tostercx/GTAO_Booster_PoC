@@ -8,7 +8,7 @@ As I'm currently getting some non-developer traffic I feel like I should make so
 2. **Not for casual use** - the instructions below are for developers. I'm not providing any builds/binaries or user support. Some common questions are answered in the issue section.
 3. **Feel free to fork** - if you are a developer and would like to maintain a more up-to-date version feel free to make a fork.
 
-There's a fork by QuickNET-Tech here: https://github.com/QuickNET-Tech/GTAO_Booster_PoC He already made several improvements. I have not verified his builds, use at your own risk, but the guy seems ok. It looks like due to the amount of traffic/spam I redirected there his issue section is currently closed (sorry QuickNET :/)
+There's a fork by QuickNET-Tech here: https://github.com/QuickNET-Tech/GTAO_Booster_PoC He already made several improvements. I have not verified his builds, use at your own risk, but the guy seems ok.
 
 ## PoC that fixes two GTA Online bugs and drastically improves load times for CPU-bound systems
 
