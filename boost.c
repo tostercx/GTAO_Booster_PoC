@@ -7,6 +7,8 @@ netcat_insert_direct_t netcat_insert_direct = NULL;
 
 typedef size_t (__cdecl* strlen_t)(const char *str);
 strlen_t builtin_strlen = NULL;
+typedef EXECUTION_STATE (*SetThreadExecutionStatefunc)(EXECUTION_STATE);
+SetThreadExecutionStatefunc SetThreadExecutionState_orig = 0;
 
 HMODULE g_hmod = NULL;
 HANDLE g_uninject_thread = NULL;
@@ -92,6 +94,15 @@ char __fastcall netcat_insert_dedupe_hooked(uint64_t catalog, uint64_t* key, uin
   return 1;
 }
 
+EXECUTION_STATE SetThreadExecutionState_hook(EXECUTION_STATE esFlags)
+{
+    if (esFlags == (ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED))
+    {
+        return SetThreadExecutionState_orig((EXECUTION_STATE)ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED);
+    }
+    return SetThreadExecutionState_orig(esFlags);
+};
+
 void initialize()
 {
   // set up function hooks
@@ -115,9 +126,11 @@ void initialize()
 
   MH_CreateHook((LPVOID)strlen_addr, &strlen_cacher, (LPVOID*)&builtin_strlen);
   MH_CreateHook((LPVOID)netcat_insert_dedupe_addr, &netcat_insert_dedupe_hooked, NULL);
-  
+  MH_CreateHook(SetThreadExecutionState, SetThreadExecutionState_hook, (LPVOID*)&SetThreadExecutionState_orig);
+
   MH_EnableHook((LPVOID)strlen_addr);
   MH_EnableHook((LPVOID)netcat_insert_dedupe_addr);
+  MH_EnableHook(SetThreadExecutionState);
 }
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReversed)
